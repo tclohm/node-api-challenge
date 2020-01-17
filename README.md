@@ -40,13 +40,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+	Two parts of express that I've learned is how important configure the environment for local development and production are different. We don't have control over what port heroku will use but we can point it into the right direction using `process.env.port` Another thing I learned is express uses promises to return successes or an errors with their endpoints. 
+
 - [ ] Describe Middleware?
+
+	Middleware are functions that sits on our apps. It allows us to have other functionality to build applications more efficiently. It can give us more power under the hood. For express, middleware allows us to execute code, make changes to the request and response object, end the request-response cycle, and call our next middleware function in the stack.
 
 - [ ] Describe a Resource?
 
+	A Resource in RESTful API's are the objects that are returned to the client. Those objects usually have a type, data, and a method attached to them. They are usually unique and are represented as data. They also have at least one URI attached to it for accessbility.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+	API returns the status code in the 200's, which are categorized as successes, and they can return json with information. 
+
 - [ ] How can we partition our application into sub-applications?
+
+	To partition the application into sub-applications we can use one of expresses objects, the router. It acts as middleware and can be plugged into the main application with the .use() method. Example: app.use('/api/somewhere', somewhereRouter)
 
 ## Minimum Viable Product
 
