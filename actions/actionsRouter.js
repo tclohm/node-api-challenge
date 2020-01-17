@@ -3,10 +3,10 @@ const Actions = require("../data/helpers/actionModel");
 
 const router = express.Router();
 
-// CREATE ACTION for project
+// CREATE ACTION for project -- ✅
 router.post("/", (req, res) => {
-	const { text, notes } = req.body;
-	if(text && notes) {
+	const { description, notes } = req.body;
+	if(description && notes) {
 		Actions.insert(req.body)
 				.then(action => {
 					if (action) {
@@ -23,11 +23,11 @@ router.post("/", (req, res) => {
 				})
 	} else {
 		res.status(400)
-			.json({ message: "Please provide text and notes for the action" });
+			.json({ message: "Please provide description and notes for the action" });
 	}
 });
 
-// READ
+// READ -- ✅
 // THIS HAPPENS IN `projectRouter` using .getProjectActions()
 router.get("/:id", (req, res) => {
 	Actions.get(req.params.id)
@@ -47,7 +47,7 @@ router.get("/:id", (req, res) => {
 			})
 })
 
-// UPDATE singular actions
+// UPDATE singular actions -- ✅
 router.put("/:id", (req, res) => {
 	const changes = req.body;
 	const { description, notes } = req.body;
@@ -72,7 +72,7 @@ router.put("/:id", (req, res) => {
 	}
 });
 
-// DELETE
+// DELETE -- ✅
 router.delete("/:id", (req, res) => {
 	Actions.remove(req.params.id)
 			.then(identifier => {

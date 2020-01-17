@@ -3,7 +3,7 @@ const Projects = require("../data/helpers/projectModel");
 
 const router = express.Router();
 
-// CREATE
+// CREATE -- ✅
 router.post("/", (req, res) => {
 	Projects.insert(req.body)
 			.then(project => {
@@ -22,9 +22,9 @@ router.post("/", (req, res) => {
 			})
 });
 
-// READ plural
+// READ plural -- ✅
 router.get("/", (req, res) => {
-	Projects.get(req.query)
+	Projects.get()
 			.then(projects => {
 				res.status(200)
 					.json(projects);
@@ -36,7 +36,7 @@ router.get("/", (req, res) => {
 			})
 });
 
-// READ singular
+// READ singular -- ✅
 router.get("/:id", (req, res) => {
 	Projects.get(req.params.id)
 			.then(project => {
@@ -54,7 +54,7 @@ router.get("/:id", (req, res) => {
 			})
 });
 
-// READ singular
+// READ singular -- ✅
 router.get("/:id/actions", (req, res) => {
 	Projects.getProjectActions(req.params.id)
 			.then(actions => {
@@ -72,7 +72,7 @@ router.get("/:id/actions", (req, res) => {
 			});
 });
 
-// UPDATE singular
+// UPDATE singular -- ✅
 router.put("/:id", (req, res) => {
 	const changes = req.body;
 	const { name, description } = req.body;
@@ -97,8 +97,7 @@ router.put("/:id", (req, res) => {
 	}
 });
 
-
-// DELETE singular
+// DELETE singular -- ✅
 router.delete("/:id", (req, res) => {
 	Projects.remove(req.params.id)
 			.then(identifier => {
